@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <title>Education</title>
+  </head>
+  <body>
+    <header>
+      <div class="contact-img">
+        <!-- <img src="images/2.jpg" alt="contact-img" class="contact-img"> -->
+      </div>
+      <nav class="nav-bar">
+        <ul>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <form id="contactform" action="index.html" method="post">
+        <fieldset>
+          <h1>Contact me</h1>
+          <p>Have questions? Want to talk? Use the form below to get in touch!</p>
+          <ul>
+            <li>
+              <label for="fullname">Fullname: </label>
+              <input type="text" name="fullname" id="fullname">
+              <p class="error" id="fullname_error">* Required field</p>
+            </li>
+            <li>
+              <label for="phonenumber">Phonenumber: </label>
+              <input type="text" name="phonenumber" id="phonenumber">
+              <p class="error" id="phonenumber_error">* Required field</p>
+              <p id="phonenumber_invalid_error">* Invalid phonenumber</p>
+            </li>
+            <li>
+              <label for="email">Email address: </label>
+              <input type="text" name="email" id="email">
+              <p class="error" id="email_error">* Required field</p>
+              <p id="email_invalid_error">* Invalid email address</p>
+            </li>
+            <li>
+              <label for="comment">Comments: </label>
+              <textarea name="comment"></textarea>
+            </li>
+          </ul>
+          <button type="submit" id="submit">Submit</button>
+  				<button type="reset" id="reset">Reset</button>
+        </fieldset>
+      </form>
+    </main>
+
+    <footer>
+      <p>Narathip Sarrapanya 2021 &copy;</p>
+    </footer>
+  </body>
+</html>
