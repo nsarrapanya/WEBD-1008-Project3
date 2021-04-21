@@ -7,11 +7,13 @@
 
  **/
 
+// Handle the button press event.
 function load() {
   document.getElementById("enter").addEventListener("click",
     function() {
       window.location.assign("education.html");
-    })
+    });
 }
 
+// Loader
 document.addEventListener("DOMContentLoaded", load);

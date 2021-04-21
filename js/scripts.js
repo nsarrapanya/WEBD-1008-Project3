@@ -7,6 +7,7 @@
 
  **/
 
+// Handles the function for form validation.
 function validate(e) {
   hideErrors();
   if (formHasErrors()) {
@@ -16,6 +17,7 @@ function validate(e) {
   return true;
 }
 
+// Handles the reset event of contact form.
 function reset(e) {
   if (confirm('Reset form?')) {
     hideErrors();
@@ -26,6 +28,7 @@ function reset(e) {
   return false;
 }
 
+// Validate contact form.
 function formHasErrors() {
   let errorFlag = false;
 
@@ -35,64 +38,69 @@ function formHasErrors() {
     var textFields = document.getElementById(requiredFields[i]);
 
     if (!formFieldHasInput(textFields)) {
-        document.getElementById(requiredFields[i] + "_error").style.display = "block";
-        if (!errorFlag) {
-          textFields.focus();
-          textFields.select();
-        }
-        errorFlag = true;
+      document.getElementById(requiredFields[i] + "_error").style.display = "block";
+      if (!errorFlag) {
+        textFields.focus();
+        textFields.select();
       }
-
-      let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-      let phonenumberRegExp = new RegExp(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/);
-
-      let emailValue = document.getElementById("email").value;
-      let phonenumberValue = document.getElementById("phonenumber").value;
-
-      if (!emailRegExp.test(emailValue)) {
-        document.getElementById("email_invalid_error").style.display = "block";
-        if (!errorFlag) {
-          textFields.focus();
-          textFields.select();
-        }
-        errorFlag = true;
-      }
-
-      if (!phonenumberRegExp.test(phonenumberValue)) {
-        document.getElementById("phonenumber_invalid_error").style.display = "block";
-        if (!errorFlag) {
-          textFields.focus();
-          textFields.select();
-        }
-        errorFlag = true;
-      }
+      errorFlag = true;
     }
-    return errorFlag;
-  }
 
-  function hideErrors() {
-    let error = document.getElementsByClassName("error");
-    for (let i = 0; i < error.length; i++) {
-      error[i].style.display = "none";
-      document.getElementById("email_invalid_error").style.display = "none";
-      document.getElementById("phonenumber_invalid_error").style.display = "none";
+    let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+    let phonenumberRegExp = new RegExp(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/);
+
+    let emailValue = document.getElementById("email").value;
+    let phonenumberValue = document.getElementById("phonenumber").value;
+
+    if (!emailRegExp.test(emailValue)) {
+      document.getElementById("email_invalid_error").style.display = "block";
+      if (!errorFlag) {
+        textFields.focus();
+        textFields.select();
+      }
+      errorFlag = true;
+    }
+
+    if (!phonenumberRegExp.test(phonenumberValue)) {
+      document.getElementById("phonenumber_invalid_error").style.display = "block";
+      if (!errorFlag) {
+        textFields.focus();
+        textFields.select();
+      }
+      errorFlag = true;
     }
   }
+  return errorFlag;
+}
 
-  function trim(str) {
-    return str.replace(/^\s+|\s+$/g, "");
+// Hides errors.
+function hideErrors() {
+  let error = document.getElementsByClassName("error");
+  for (let i = 0; i < error.length; i++) {
+    error[i].style.display = "none";
+    document.getElementById("email_invalid_error").style.display = "none";
+    document.getElementById("phonenumber_invalid_error").style.display = "none";
   }
+}
 
-  function formFieldHasInput(fieldElement) {
-    if (fieldElement.value == null || trim(fieldElement.value) == "") {
-      return false;
-    }
-    return true;
+// Trim whitespace.
+function trim(str) {
+  return str.replace(/^\s+|\s+$/g, "");
+}
+
+// Check if form is empty or null.
+function formFieldHasInput(fieldElement) {
+  if (fieldElement.value == null || trim(fieldElement.value) == "") {
+    return false;
   }
+  return true;
+}
 
-  function load() {
-    document.getElementById("contactform").addEventListener("submit", validate);
-    document.getElementById("contactform").addEventListener("reset", reset);
-  }
+// Handle the event listener for contact form.
+function load() {
+  document.getElementById("contactform").addEventListener("submit", validate);
+  document.getElementById("contactform").addEventListener("reset", reset);
+}
 
-  document.addEventListener("DOMContentLoaded", load);
+// Loader
+document.addEventListener("DOMContentLoaded", load);
